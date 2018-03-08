@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://here-and-there-project.herokuapp.com',
+    production: 'https://here-and-there-api.herokuapp.com',
     development: 'localhost:4741'
   }
 }
