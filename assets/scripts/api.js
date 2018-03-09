@@ -2,7 +2,7 @@
 
 // const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-// const store = require('./store')
+const store = require('./store')
 
 // ajax requests to post the info input to the server (API). The API stores the
 // sign up information and returns what's been saved.
@@ -28,7 +28,19 @@ const signIn = function (data) {
   })
 }
 
+const signOut = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out',
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  signOut
 }
