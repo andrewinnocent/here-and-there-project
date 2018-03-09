@@ -50,9 +50,24 @@ const changePassword = function (data) {
     data
   })
 }
+
+// Journal scripts
+const createEntry = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/journals',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  createEntry
 }

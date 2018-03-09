@@ -47,6 +47,7 @@ const onChangePassword = function (event) {
   $('#change-password-form').get(0).reset()
 }
 
+// Authorization handlers
 const authHandlers = () => {
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-in-form').on('submit', onSignIn)
@@ -54,6 +55,24 @@ const authHandlers = () => {
   $('#change-password-form').on('submit', onChangePassword)
 }
 
+// Journal entry events
+const onSubmitEntry = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  // The following get is to get the integer values assigned to radio buttons in order for API response to show it. Previously, showed "on" instead. Oddly, I can comment it out and it will continue to return the integer. I had to run it first and test then could remove it and it would still work. Weird (to me).
+  // $('.rating').val()
+  console.log(data)
+  api.createEntry(data)
+    .then(ui.entrySubmitSuccess)
+    .catch(ui.entrySubmitFailure)
+}
+
+// Journal entry handlers
+const entryHandlers = () => {
+  $('#journal-entry-form').on('submit', onSubmitEntry)
+}
+
 module.exports = {
-  authHandlers
+  authHandlers,
+  entryHandlers
 }

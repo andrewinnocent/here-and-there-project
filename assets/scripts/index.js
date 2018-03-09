@@ -2,7 +2,7 @@
 //
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const authEvents = require('./events')
+const eventHandlers = require('./events')
 // const api = require('./api')
 // const ui = require('./ui')
 
@@ -17,7 +17,8 @@ $(() => {
 // // require('./example')
 
 $(() => {
-  authEvents.authHandlers()
+  eventHandlers.authHandlers()
+  eventHandlers.entryHandlers()
 })
 // module.exports = {
 //   onSignUp

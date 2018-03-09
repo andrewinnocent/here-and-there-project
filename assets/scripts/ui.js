@@ -58,6 +58,17 @@ const changePasswordFailure = function () {
   $('#message').css('background-color', '#ff91A3')
 }
 
+// Journal entry messages
+const entrySubmitSuccess = function () {
+  $('#message').text('Submitted Successfully')
+  $('#message').css('background-color', '#8fff90')
+}
+
+const entrySubmitFailure = function () {
+  $('#message').text('Error Submiting - Try Again')
+  $('#message').css('background-color', '#ff91A3')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -66,5 +77,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  entrySubmitSuccess,
+  entrySubmitFailure
 }
