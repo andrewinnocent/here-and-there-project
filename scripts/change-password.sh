@@ -2,7 +2,7 @@
 
 # ID=2 sh scripts/change-password.sh
 
-curl "http://localhost:4741/change-password/" \
+curl "http://localhost:4741/change-password" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \

@@ -47,11 +47,24 @@ const signOutFailure = function () {
   $('#message').css('background-color', '#ff91A3')
 }
 
+// Change password messages
+const changePasswordSuccess = function () {
+  $('#message').text('Changed Password Successfully')
+  $('#message').css('background-color', '#8fff90')
+}
+
+const changePasswordFailure = function () {
+  $('#message').text('Error Changing Password - Try Again')
+  $('#message').css('background-color', '#ff91A3')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
