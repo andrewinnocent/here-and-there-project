@@ -65,11 +65,12 @@ const onSubmitEntry = function (event) {
   api.createEntry(data)
     .then(ui.entrySubmitSuccess)
     .catch(ui.entrySubmitFailure)
+  $('#create-entry-form').get(0).reset()
 }
 
 // Journal entry handlers
 const entryHandlers = () => {
-  $('#journal-entry-form').on('submit', onSubmitEntry)
+  $('#create-entry-form').on('submit', onSubmitEntry)
 }
 
 module.exports = {
