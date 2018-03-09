@@ -2,6 +2,7 @@
 //
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const events = require('./events')
 // const api = require('./api')
 // const ui = require('./ui')
 // const getFormFields = require('../../lib/get-form-fields')
@@ -17,11 +18,7 @@ $(() => {
 // // require('./example')
 
 $(() => {
-  $('#onSignUp').on('submit', function (event) {
-    console.log(event)
-    event.preventDefault()
-    console.log('I clicked button')
-  })
+  events.addHandlers()
 })
 // module.exports = {
 //   onSignUp

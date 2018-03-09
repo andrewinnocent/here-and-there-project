@@ -1,8 +1,8 @@
 'use strict'
 
-// const api = require('./api')
+const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
-// const ui = require('./ui')
+const ui = require('./ui')
 
 // Sign up event
 const onSignUp = function (event) {
@@ -11,6 +11,9 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   console.log(data)
   $('#sign-up-form').get(0).reset()
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const addHandlers = () => {
