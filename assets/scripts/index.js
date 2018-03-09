@@ -5,7 +5,6 @@ const config = require('./config')
 const events = require('./events')
 // const api = require('./api')
 // const ui = require('./ui')
-// const getFormFields = require('../../lib/get-form-fields')
 
 $(() => {
   setAPIOrigin(location, config)
