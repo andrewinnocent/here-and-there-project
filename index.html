@@ -109,10 +109,9 @@
 
   <p id="message"></p>
 
-  <!-- <div>
-    <form id="journal-entry-form">
-      <div class="form-group">
-        <select name="state" id="state-input">
+  <!-- Create entry form -->
+  <div class="form-group">
+    <select name="journal[state]" id="state-input">
         <option value="" selected="selected">Select a State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -166,98 +165,42 @@
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
       </select>
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput">Site Visited</label>
-        <input type="text" class="form-control" id="location-input" placeholder="I went to...">
-      </div>
-      <div class="form-check form-check-inline">
-      <div>
-        <label for="formGroupExampleInput2">Rate: 1=😠 5=😍</label>
-      </div>
-        <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rate-one" value="option1"> 1
-  </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rate-two" value="option2"> 2
-  </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rate-three" value="option3"> 3
-  </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rate-four" value="option3"> 4
-  </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rate-five" value="option3"> 5
-  </label>
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Comments</label>
-        <input type="text" class="form-control" id="comments-input" placeholder="My experience was...">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">When Did You Go?</label>
-        <input type="text" class="form-control" id="date-input" placeholder="I went on...">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="time-input" placeholder="At this time...">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div> -->
-
-<!-- FORM TO USE! -->
-<form id="journal-entry-form">
-  <div class="form-group ">
-    <label for="example-text-input" class="col-2 col-form-label">State</label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="journal[state]" placeholder="Florida" id="state-input">
-    </div>
   </div>
-
   <div class="form-group">
     <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
     <div class="col-10">
       <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach" id="example-text-input">
     </div>
   </div>
- <fieldset class="form-group">
-   <label for="exampleSelect1">Rate: 1=😠 5=😍</label>
-   <div class="form-select">
-   <label class="form-check-label">
-     <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"> 1</label>
- </div>
- <div class="form-select">
- <label class="form-check-label rating">
-     <input type="radio" class="form-check-input" name="journal[rating]" value="2" id="rate-two" placeholder="option2"> 2</label>
- </div>
- <div class="form-select">
- <label class="form-check-label rating">
-     <input type="radio" class="form-check-input" name="journal[rating]" value="3" id="rate-three" placeholder="option2"> 3</label>
- </div>
- <div class="form-select">
- <label class="form-check-label rating">
-     <input type="radio" class="form-check-input" name="journal[rating]" value=4 id="rate-four" placeholder="option2"> 4</label>
- </div>
- <div class="form-select">
- <label class="form-check-label rating">
-     <input type="radio" class="form-check-input" name="journal[rating]" value=5 id="rate-five" placeholder="option2"> 5</label>
- </div>
-</fieldset>
-<div class="form-group ">
-  <label for="example-text-input" class="col-2 col-form-label">Comments</label>
-  <div class="col-10">
-    <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="test-input">
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Rate: 1=😠 5=😍</label>
+    <div class="form-select">
+      <label class="form-check-label">
+     <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"> 😠</label>
+    </div>
+    <div class="form-select">
+      <label class="form-check-label rating">
+     <input type="radio" class="form-check-input" name="journal[rating]" value="2" id="rate-two" placeholder="option2"> 😦</label>
+    </div>
+    <div class="form-select">
+      <label class="form-check-label rating">
+     <input type="radio" class="form-check-input" name="journal[rating]" value="3" id="rate-three" placeholder="option2"> 😑</label>
+    </div>
+    <div class="form-select">
+      <label class="form-check-label rating">
+     <input type="radio" class="form-check-input" name="journal[rating]" value=4 id="rate-four" placeholder="option2"> 😀</label>
+    </div>
+    <div class="form-select">
+      <label class="form-check-label rating">
+     <input type="radio" class="form-check-input" name="journal[rating]" value=5 id="rate-five" placeholder="option2"> 😍</label>
+    </div>
+  </fieldset>
+  <div class="form-group ">
+    <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+    <div class="col-10">
+      <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="test-input">
+    </div>
   </div>
-</div>
   <!-- <div class="form-group">
    <label for="exampleTextarea">Comments</label>
    <textarea class="form-control" id="comments-input" rows="3" name="journal[comments]" placeholder="Go ahead... Journal away!"></textarea>
@@ -274,8 +217,8 @@
       <input class="form-control" type="time" name="journal[time]" placeholder="13:45:00" id="time-input">
     </div>
   </div>
-<button type="submit" class="btn btn-primary">Save</button>
-</form>
+  <button type="submit" class="btn btn-primary">Save</button>
+  </form>
 
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
