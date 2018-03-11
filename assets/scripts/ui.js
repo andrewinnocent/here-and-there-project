@@ -73,8 +73,8 @@ const entrySubmitFailure = function () {
 // Get all journal entries messages
 const getEntriesSuccess = function (data) {
 // data.journals is an array of objects
-// Handlebars attempt:
   console.log(data.journals)
+  // Referencing handlebars
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
   $('.get-entries').css('background-color', '#8fff90')
@@ -82,6 +82,21 @@ const getEntriesSuccess = function (data) {
 }
 
 const getEntriesFailure = function () {
+  $('#get-entries-message').text('Error Getting Entries - Try Again')
+  $('#get-entries-message').css('background-color', '#ff91A3')
+}
+
+// Get one journal entry messages
+const getEntrySuccess = function (data) {
+// data.journals is an array of objects
+  console.log(data.journals)
+  // const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
+  // $('.get-entries').append(indexJournalsHtml)
+  // $('.get-entries').css('background-color', '#8fff90')
+  store.journals = data.journals
+}
+
+const getEntryFailure = function () {
   $('#get-entries-message').text('Error Getting Entries - Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
@@ -98,5 +113,7 @@ module.exports = {
   entrySubmitSuccess,
   entrySubmitFailure,
   getEntriesSuccess,
-  getEntriesFailure
+  getEntriesFailure,
+  getEntrySuccess,
+  getEntryFailure
 }
