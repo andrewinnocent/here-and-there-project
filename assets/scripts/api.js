@@ -64,10 +64,23 @@ const createEntry = function (data) {
   })
 }
 
+// Get all journal entries
+const getAllEntries = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/journals',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
-  createEntry
+  createEntry,
+  getAllEntries
 }

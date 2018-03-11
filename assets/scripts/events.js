@@ -68,9 +68,18 @@ const onSubmitEntry = function (event) {
   $('#create-entry-form').get(0).reset()
 }
 
+// Get all journal entries
+const onGetEntries = function (event) {
+  event.preventDefault()
+  // console.log('w00t!')
+  api.getAllEntries()
+    .then(ui.getEntriesSuccess)
+    .catch(ui.getEntriesFailure)
+}
 // Journal entry handlers
 const entryHandlers = () => {
   $('#create-entry-form').on('submit', onSubmitEntry)
+  $('#get-entries-button').click(onGetEntries)
 }
 
 module.exports = {
