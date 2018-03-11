@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const indexJournalsTemplate = require('./templates/helpers/journals-listing.handlebars')
 
 // Sign-up messages
 const signUpSuccess = function (data) {
@@ -72,28 +73,10 @@ const entrySubmitFailure = function () {
 // Get all journal entries messages
 const getEntriesSuccess = function (data) {
 // data.journals is an array of objects
-
-// forEach() method to iterate through each object in the array
-  data.journals.forEach(function (index) {
-    console.log('Date: ' + index.date +
-    ' State: ' + index.state +
-    ' Location: ' + index.location_name +
-    ' Rating: ' + index.rating +
-    ' Comments: ' + index.comments +
-    ' Time: ' + index.time)
-  }) // The challenge is to show the results in the DOM!
-
-  // const test = JSON.stringify(data.journals[0])
-  // $('#get-entries-message').text(test)
-
-  // A VERY UGLY way to get values to show (this is one object).
-  $('#get-entries-date').text('When: ' + JSON.stringify(data.journals[0].date))
-  $('#get-entries-state').text(JSON.stringify(data.journals[0].state))
-  $('#get-entries-location').text(JSON.stringify(data.journals[0].location_name))
-  $('#get-entries-rating').text(JSON.stringify(data.journals[0].rating))
-  $('#get-entries-comments').text(JSON.stringify(data.journals[0].comments))
-  $('#get-entries-time').text(JSON.stringify(data.journals[0].time))
-
+// Handlebars attempt:
+  console.log(data.journals)
+  const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
+  $('.get-entries').append(indexJournalsHtml)
   $('.get-entries').css('background-color', '#8fff90')
   store.journals = data.journals
 }
