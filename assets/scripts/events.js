@@ -83,6 +83,7 @@ const onGetEntry = (event) => {
   console.log(data) // object with journal as key and value of object with ID requested.
   api.getOneEntry(data)
     .then(ui.getEntrySuccess)
+    .catch(ui.getEntryFailure)
   $('#get-entry').get(0).reset()
 }
 

@@ -113,8 +113,9 @@ const deleteEntrySuccess = function (data) {
   store.journals = data.journals
 }
 
-const deleteEntryFailure = (error) => {
-  console.error(error)
+const deleteEntryFailure = () => {
+  $('#get-entries-message').text('Error Deleting Entry - Try Again')
+  $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
 module.exports = {
