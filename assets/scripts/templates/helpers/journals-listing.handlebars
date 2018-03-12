@@ -1,7 +1,7 @@
 {{#each journals as |journal|}}
 
   <h4>Journal {{journal.id}}</h4>
-  <ul class="entries-listing" data-id="{{journal.id}}">
+  <ul class="entries-listing" data-id={{journal.id}}>
     <li>
       <div>
         {{#if journal.state}}
@@ -56,7 +56,11 @@
         {{/if}}
       </div>
     </li>
-    <!-- <li><button class="removebutton">Remove</button></li> -->
+      <div>
+        <button type="button" class="journal-delete btn btn-warning" id="entry-delete-button" data-id={{journal.id}}>
+          Delete
+        </button>
+      </div>
   </ul>
 
 {{/each}}

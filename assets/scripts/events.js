@@ -83,18 +83,23 @@ const onGetEntry = (event) => {
   console.log(data) // object with journal as key and value of object with ID requested.
   api.getOneEntry(data)
     .then(ui.getEntrySuccess)
+  $('#get-entry').get(0).reset()
 }
 
+// Update an entry
+// const onUpdateEntry = () => {
+//
+// }
+
 // Delete an entry
-const onDeleteEntry = () => {
-  // event.preventDefault()
-  console.log('clicked')
-  // grab the `data-id` attribute
-  // const id = event.target.dataset.id
-  // console.log(id)
-  // api.deleteEntry(id)
-  //   .then(() => onGetBooks(event)) // after deleting a book, refetch all books
-  //   .catch(ui.failure)
+const onDeleteEntry = (event) => {
+  event.preventDefault()
+  // grab the `data-id` attribute. data = the id from the handlebar button
+  const id = event.target.dataset.id
+  api.deleteEntry(id)
+    .then(() => api.getAllEntries(event)) // after deleting an entry, refetch all entries
+    .then(ui.deleteEntrySuccess)
+    .catch(ui.deleteEntryFailure)
 }
 
 // Journal entry handlers
@@ -102,7 +107,8 @@ const entryHandlers = () => {
   $('#create-entry-form').on('submit', onSubmitEntry)
   $('#get-entries-button').click(onGetEntries)
   $('#get-entry').on('submit', onGetEntry)
-  $('.get-entry').click('.entry-delete-button', onDeleteEntry)
+  $('.get-entries').click('#entry-delete-button', onDeleteEntry)
+  // $('#entry-delete-button').click(onDeleteEntry)
 }
 
 module.exports = {

@@ -91,8 +91,9 @@ const getOneEntry = function (data) {
 
 // Delete one journal entry
 const deleteEntry = function (id) {
+  console.log(id)
   return $.ajax({
-    url: config.apiOrigin + '/journals' + id,
+    url: config.apiOrigin + '/journals/' + id,
     method: 'DELETE',
     headers: {
       contentType: 'application/json',

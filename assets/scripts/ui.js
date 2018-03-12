@@ -102,6 +102,21 @@ const getEntryFailure = function () {
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
+// Delete one journal entry messages
+const deleteEntrySuccess = function (data) {
+// Clear DOM of entries
+  $('.get-entries').empty()
+  // Reload DOM of remaining entries
+  const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
+  $('.get-entries').append(indexJournalsHtml)
+  $('.get-entries').css('background-color', '#8fff90')
+  store.journals = data.journals
+}
+
+const deleteEntryFailure = (error) => {
+  console.error(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -116,5 +131,7 @@ module.exports = {
   getEntriesSuccess,
   getEntriesFailure,
   getEntrySuccess,
-  getEntryFailure
+  getEntryFailure,
+  deleteEntrySuccess,
+  deleteEntryFailure
 }

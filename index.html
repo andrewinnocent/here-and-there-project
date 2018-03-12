@@ -174,7 +174,7 @@
     </div>
   </div>
   <fieldset class="form-group">
-    <label for="exampleSelect1">Rate</label>
+    <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
     <div class="form-select">
       <label class="form-check-label">
      <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"> 😠</label>
@@ -222,12 +222,15 @@
   </form>
 
 <!-- Get all entries -->
+<p id="get-entries-message"></p>
+
   <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
 
 <div class="get-entries">
 </div>
 
 <!-- Get one entry -->
+<div>
 <form class="navbar-form navbar-left" id="get-entry">
   <div class="form-group">
     <input type="number" class="form-control" name="journal[id]" placeholder="Search Entries by ID">
@@ -236,9 +239,10 @@
     <!-- ICON not rendering! <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
   </button>
 </form>
-
-<div class="get-entry">
 </div>
+<!--
+<div class="get-entry">
+</div> -->
 
 <!-- Update Lorem with blurb about site -->
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
