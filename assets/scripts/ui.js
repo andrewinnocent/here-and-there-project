@@ -62,7 +62,7 @@ const changePasswordFailure = function () {
 
 // Journal entry messages
 const entrySubmitSuccess = function () {
-  $('#message').text('Submitted Successfully')
+  $('#message').text('New Entry Created Successfully')
   $('#message').css('background-color', '#8fff90')
 }
 
@@ -98,8 +98,24 @@ const getEntrySuccess = function (data) {
 }
 
 const getEntryFailure = function () {
-  $('#get-entries-message').text('Error Getting Entry - Try Again')
+  $('#get-entries-message').text('Error! Entry Doesn\'t Exist - Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
+}
+
+// To clear entries in DOM
+const clearEntries = () => {
+  $('.get-entries').empty()
+}
+
+// Update one journal entry messages
+const updateEntrySuccess = function (data) {
+// Clear DOM of entries
+  $('.get-entries').empty()
+  // Reload DOM of remaining entries
+  const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
+  $('.get-entries').append(indexJournalsHtml)
+  $('.get-entries').css('background-color', '#8fff90')
+  store.journals = data.journals
 }
 
 // Delete one journal entry messages
@@ -133,6 +149,8 @@ module.exports = {
   getEntriesFailure,
   getEntrySuccess,
   getEntryFailure,
+  clearEntries,
+  updateEntrySuccess,
   deleteEntrySuccess,
   deleteEntryFailure
 }

@@ -89,9 +89,21 @@ const getOneEntry = function (data) {
   })
 }
 
+// Update one journal entry
+const updateEntry = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/journals/' + id,
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+    // data should be required...
+  })
+}
+
 // Delete one journal entry
 const deleteEntry = function (id) {
-  console.log(id)
   return $.ajax({
     url: config.apiOrigin + '/journals/' + id,
     method: 'DELETE',
@@ -110,5 +122,6 @@ module.exports = {
   createEntry,
   getAllEntries,
   getOneEntry,
+  updateEntry,
   deleteEntry
 }

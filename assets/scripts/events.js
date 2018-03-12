@@ -59,6 +59,7 @@ const authHandlers = () => {
 const onSubmitEntry = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  $('#entry-modal').modal('hide')
   // The following get is to get the integer values assigned to radio buttons in order for API response to show it. Previously, showed "on" instead. Oddly, I can comment it out and it will continue to return the integer. I had to run it first and test then could remove it and it would still work. Weird (to me).
   // $('.rating').val()
   console.log(data)
@@ -87,10 +88,22 @@ const onGetEntry = (event) => {
   $('#get-entry').get(0).reset()
 }
 
+// Clear button
+const onClearEntries = (event) => {
+  event.preventDefault()
+  ui.clearEntries()
+}
+
 // Update an entry
-// const onUpdateEntry = () => {
-//
-// }
+const onUpdateEntry = (event) => {
+  event.preventDefault()
+  console.log('clicked')
+  const id = event.target.dataset.id
+  // console.log(id)
+  api.updateEntry(id)
+  //   .then(() => api.getAllEntries(event))
+  //   .then(ui.updateEntrySuccess)
+}
 
 // Delete an entry
 const onDeleteEntry = (event) => {
@@ -108,8 +121,10 @@ const entryHandlers = () => {
   $('#create-entry-form').on('submit', onSubmitEntry)
   $('#get-entries-button').click(onGetEntries)
   $('#get-entry').on('submit', onGetEntry)
+  $('#clear-entries-button').click(onClearEntries)
+  // $('.get-entries').click('#entry-update-button', onUpdateEntry)
+  $('#entry-update-button').click(onUpdateEntry)
   $('.get-entries').click('#entry-delete-button', onDeleteEntry)
-  // $('#entry-delete-button').click(onDeleteEntry)
 }
 
 module.exports = {
