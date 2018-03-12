@@ -109,10 +109,20 @@
 
   <p id="message"></p>
 
-  <!-- Create entry form -->
-  <form id="create-entry-form">
-  <div class="form-group">
-    <select name="journal[state]" id="state-input">
+  <!-- Create entry form in modal-->
+  <div class="modal fade" id="entry-modal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="entry-modal-label">Journal Entry</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <form id="create-entry-form">
+            <div class="form-group">
+              <select name="journal[state]" id="state-input">
         <option value="" selected="selected">Select a State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -166,82 +176,101 @@
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
       </select>
-  </div>
-  <div class="form-group">
-    <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach" id="example-text-input">
-    </div>
-  </div>
-  <fieldset class="form-group">
-    <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
-    <div class="form-select">
-      <label class="form-check-label">
+            </div>
+            <div class="form-group">
+              <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach" id="example-text-input">
+              </div>
+            </div>
+            <fieldset class="form-group">
+              <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
+              <div class="form-select">
+                <label class="form-check-label">
      <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"> 😠</label>
-    </div>
-    <div class="form-select">
-      <label class="form-check-label rating">
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
      <input type="radio" class="form-check-input" name="journal[rating]" value="2" id="rate-two" placeholder="option2"> 😦</label>
-    </div>
-    <div class="form-select">
-      <label class="form-check-label rating">
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
      <input type="radio" class="form-check-input" name="journal[rating]" value="3" id="rate-three" placeholder="option2"> 😑</label>
-    </div>
-    <div class="form-select">
-      <label class="form-check-label rating">
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
      <input type="radio" class="form-check-input" name="journal[rating]" value=4 id="rate-four" placeholder="option2"> 😀</label>
-    </div>
-    <div class="form-select">
-      <label class="form-check-label rating">
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
      <input type="radio" class="form-check-input" name="journal[rating]" value=5 id="rate-five" placeholder="option2"> 😍</label>
-    </div>
-  </fieldset>
-  <div class="form-group ">
-    <label for="example-text-input" class="col-2 col-form-label">Comments</label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="test-input">
-    </div>
-  </div>
-  <!-- <div class="form-group">
+              </div>
+            </fieldset>
+            <div class="form-group ">
+              <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+              <div class="col-10">
+                <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="test-input">
+              </div>
+            </div>
+            <!-- <div class="form-group">
    <label for="exampleTextarea">Comments</label>
    <textarea class="form-control" id="comments-input" rows="3" name="journal[comments]" placeholder="Go ahead... Journal away!"></textarea>
   </div> -->
-  <div class="form-group">
-    <label for="example-date-input" class="col-2 col-form-label">Date</label>
-    <div class="col-10">
-      <input class="form-control" type="date" name="journal[date]" placeholder="2017-08-19" id="date-input">
+            <div class="form-group">
+              <label for="example-date-input" class="col-2 col-form-label">Date</label>
+              <div class="col-10">
+                <input class="form-control" type="date" name="journal[date]" placeholder="2017-08-19" id="date-input">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="example-time-input" class="col-2 col-form-label">Time</label>
+              <div class="col-10">
+                <input class="form-control" type="time" name="journal[time]" placeholder="13:45:00" id="time-input">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label for="example-time-input" class="col-2 col-form-label">Time</label>
-    <div class="col-10">
-      <input class="form-control" type="time" name="journal[time]" placeholder="13:45:00" id="time-input">
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-
-<!-- Get all entries -->
+  <!-- Get all entries -->
   <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
 
-<div class="get-entries">
-</div>
-
-<!-- Get one entry -->
-<div>
-<form class="navbar-form navbar-left" id="get-entry">
-  <div class="form-group">
-    <input type="number" class="form-control" name="journal[id]" placeholder="Search Entries by ID">
+  <div class="get-entries">
   </div>
-  <button type="submit" class="btn btn-default">Find
+
+  <!-- Get one entry -->
+  <div>
+    <form class="navbar-form navbar-left" id="get-entry">
+      <div class="form-group">
+        <input type="number" class="form-control" name="journal[id]" placeholder="Search Entries by ID">
+      </div>
+      <button type="submit" class="btn btn-default">Find
     <!-- ICON not rendering! <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
   </button>
-</form>
-</div>
+    </form>
+  </div>
 
-<p id="get-entries-message"></p>
+  <!-- Update Entry -->
+  <div>
+    <button type="button" class="journal-update btn btn-default" id="entry-update-button">
+    Update
+  </button>
+  </div>
 
-<!-- Update Lorem with blurb about site -->
+  <!-- Button trigger update entry modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal">
+  Launch for Update
+</button>
+
+  <p id="get-entries-message"></p>
+
+  <!-- Update Lorem with blurb about site -->
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </body>
