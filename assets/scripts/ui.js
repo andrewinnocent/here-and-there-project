@@ -2,6 +2,7 @@
 
 const store = require('./store')
 const indexJournalsTemplate = require('./templates/helpers/journals-listing.handlebars')
+const indexJournalTemplate = require('./templates/helpers/journal-listing.handlebars')
 
 // Sign-up messages
 const signUpSuccess = function (data) {
@@ -88,16 +89,16 @@ const getEntriesFailure = function () {
 
 // Get one journal entry messages
 const getEntrySuccess = function (data) {
-// data.journals is an array of objects
-  console.log(data.journals)
-  // const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
-  // $('.get-entries').append(indexJournalsHtml)
-  // $('.get-entries').css('background-color', '#8fff90')
-  store.journals = data.journals
+// data.journal is an object with journal as key and object with ID requested as value.
+  console.log(data.journal)
+  const indexJournalHtml = indexJournalTemplate({journal: data.journal})
+  $('.get-entries').append(indexJournalHtml)
+  $('.get-entries').css('background-color', '#8fff90')
+  store.journal = data.journal
 }
 
 const getEntryFailure = function () {
-  $('#get-entries-message').text('Error Getting Entries - Try Again')
+  $('#get-entries-message').text('Error Getting Entry - Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
