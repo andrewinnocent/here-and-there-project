@@ -76,18 +76,30 @@ const getAllEntries = function () {
   })
 }
 
-// // Get one journal entry
-// const getOneEntry = function (data) {
-//   // console.log(JSON.stringify(data))
-//   return $.ajax({
-//     url: config.apiOrigin + '/journals/' + data.id,
-//     method: 'GET',
-//     headers: {
-//       contentType: 'application/json',
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+// Get one journal entry
+const getOneEntry = function (data) {
+  // console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/journals/' + data.journal.id,
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+// Delete one journal entry
+const deleteEntry = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/journals' + id,
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   signUp,
@@ -96,5 +108,6 @@ module.exports = {
   changePassword,
   createEntry,
   getAllEntries,
-  // getOneEntry
+  getOneEntry,
+  deleteEntry
 }
