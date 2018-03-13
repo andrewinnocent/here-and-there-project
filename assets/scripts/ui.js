@@ -6,16 +6,16 @@ const indexJournalTemplate = require('./templates/helpers/journal-listing.handle
 
 // Sign-up messages
 const signUpSuccess = function (data) {
-  $('#success-message').text('Signed Up Successfully').fadeIn().fadeOut(3000)
+  $('#success-message').text('Success! Log In to Start Journaling!').fadeIn().fadeOut(5000)
 }
 
 const signUpFailure = function () {
-  $('#failure-message').text('Error on Signing Up - Try Again').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Weird... Try Again').fadeIn().fadeOut(3000)
 }
 
 // Sign-in messages
 const signInSuccess = function (data) {
-  $('#success-message').text('Log In Successful, User ' + data.user.email).fadeIn().fadeOut(3000)
+  $('#success-message').text('👋 Welcome, User ' + data.user.email + '!').fadeIn().fadeOut(5000)
   // Buttons to show when signed in
   $('#sign-in-button').hide()
   $('#sign-up-button').hide()
@@ -29,16 +29,16 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function () {
-  // $('#failure-message').text('Error with Log In - Try Again').toggle().fadeOut(3000)
+  $('#failure-message').text('Hmmm... Try That Again').toggle().fadeOut(3000)
 }
 
 // Sign-out messages
 const signOutSuccess = function () {
-  $('#success-message').text('👋 See you later!').fadeIn().fadeOut(3000)
+  $('#success-message').text('✌ See you later!').fadeIn().fadeOut(3000)
 }
 
 const signOutFailure = function () {
-  $('#failure-message').text('Error Signing Out - Try Again').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Uh oh... Try That Again').fadeIn().fadeOut(3000)
 }
 
 // Change password messages
@@ -47,16 +47,16 @@ const changePasswordSuccess = function () {
 }
 
 const changePasswordFailure = function () {
-  $('#failure-message').text('Error Changing Password - Try Again').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Welp... Try Again').fadeIn().fadeOut(3000)
 }
 
 // Journal entry messages
 const entrySubmitSuccess = function () {
-  $('#success-message').text('New Entry Created Successfully').fadeIn().fadeOut(3000)
+  $('#success-message').text('✈ Smooth Sailing!').fadeIn().fadeOut(3000)
 }
 
 const entrySubmitFailure = function () {
-  $('#failure-message').text('Error Submiting - Try Again').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Whoops! Try Again').fadeIn().fadeOut(3000)
 }
 
 // Get all journal entries messages
@@ -71,7 +71,7 @@ const getEntriesSuccess = function (data) {
 }
 
 const getEntriesFailure = function () {
-  $('#get-entries-message').text('Error Getting Entries - Try Again')
+  $('#get-entries-message').text('Go Ahead And Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
@@ -86,7 +86,7 @@ const getEntrySuccess = function (data) {
 }
 
 const getEntryFailure = function () {
-  $('#get-entries-message').text('Error! Entry Doesn\'t Exist - Try Again')
+  $('#get-entries-message').text('Ah! Entry Doesn\'t Exist - Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
@@ -114,7 +114,7 @@ const deleteEntrySuccess = function (data) {
 }
 
 const deleteEntryFailure = () => {
-  $('#get-entries-message').text('Error Deleting Entry - Try Again')
+  $('#get-entries-message').text('It Won\'t Go Away - Try Again')
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
