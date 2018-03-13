@@ -6,69 +6,57 @@ const indexJournalTemplate = require('./templates/helpers/journal-listing.handle
 
 // Sign-up messages
 const signUpSuccess = function (data) {
-  $('#message').text('Signed Up Successfully')
-  $('#message').css('background-color', '#8fff90')
+  $('#success-message').text('Signed Up Successfully').fadeIn().fadeOut(3000)
 }
 
 const signUpFailure = function () {
-  $('#message').text('Error on Signing Up - Try Again')
-  $('#message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Error on Signing Up - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Sign-in messages
 const signInSuccess = function (data) {
-  $('#message').text('Log In Successful, User ' + data.user.id)
-  $('#message').css('background-color', '#8fff90')
+  $('#success-message').text('Log In Successful, User ' + data.user.email).fadeIn().fadeOut(3000)
+  // Buttons to show when signed in
+  $('#sign-in-button').hide()
+  $('#sign-up-button').hide()
+  $('#change-password-button').show()
+  $('#sign-out-button').show()
+  $('#journal-entry-button').show()
+  $('#get-entries-button').show()
+  $('#clear-entries-button').show()
+  $('#get-entry-form').show()
   store.user = data.user
-  // $('#log-in').hide()
-  // $('#signUp').hide()
-  // $('#subtitle').hide()
-  // $('.reset').show()
-  // $('#password-button').show()
-  // $('#onSignOut').show()
-  // $('#get-games-button').show()
 }
 
 const signInFailure = function () {
-  $('#message').text('Error with Log In - Try Again')
-  $('#message').css('background-color', '#ff91A3')
+  // $('#failure-message').text('Error with Log In - Try Again').toggle().fadeOut(3000)
 }
 
 // Sign-out messages
 const signOutSuccess = function () {
-  $('#message').text('Signed Out Successfully')
-  $('#message').css('background-color', '#8fff90')
-  // $('#log-in').show()
-  // $('#signUp').show()
-  // $('#game-message').hide()
-  // $('#game-id').hide()
+  $('#success-message').text('👋 See you later!').fadeIn().fadeOut(3000)
 }
 
 const signOutFailure = function () {
-  $('#message').text('Error Signing Out - Try Again')
-  $('#message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Error Signing Out - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Change password messages
 const changePasswordSuccess = function () {
-  $('#message').text('Changed Password Successfully')
-  $('#message').css('background-color', '#8fff90')
+  $('#success-message').text('Changed Password Successfully').fadeIn().fadeOut(3000)
 }
 
 const changePasswordFailure = function () {
-  $('#message').text('Error Changing Password - Try Again')
-  $('#message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Error Changing Password - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Journal entry messages
 const entrySubmitSuccess = function () {
-  $('#message').text('New Entry Created Successfully')
-  $('#message').css('background-color', '#8fff90')
+  $('#success-message').text('New Entry Created Successfully').fadeIn().fadeOut(3000)
 }
 
 const entrySubmitFailure = function () {
-  $('#message').text('Error Submiting - Try Again')
-  $('#message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Error Submiting - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Get all journal entries messages

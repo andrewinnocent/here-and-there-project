@@ -5,6 +5,20 @@ const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
 const store = require('./store')
 
+// Buttons to show/hide when not logged in
+const notSignedIn = function () {
+  $('#success-message').hide()
+  $('#failure-message').hide()
+  $('#sign-in-button').show()
+  $('#sign-up-button').show()
+  $('#change-password-button').hide()
+  $('#sign-out-button').hide()
+  $('#journal-entry-button').hide()
+  $('#get-entries-button').hide()
+  $('#clear-entries-button').hide()
+  $('#get-entry-form').hide()
+}
+
 // Sign up events
 const onSignUp = function (event) {
   event.preventDefault()
@@ -161,5 +175,6 @@ const entryHandlers = () => {
 
 module.exports = {
   authHandlers,
-  entryHandlers
+  entryHandlers,
+  notSignedIn
 }

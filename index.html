@@ -14,7 +14,7 @@
 </head>
 
 <body class="container-fluid">
-  <h1>Here & There!</h1>
+  <h1 id="heading">Here & There!</h1>
 
     <!-- H&T Blurb -->
     <p>Welcome! Keep a travel journal easily with this handy-dandy web app. You can create, view, delete, and update your journal entries from traveling all across the good ol' US of A!</p>
@@ -23,7 +23,7 @@
     <h3 id="bon-voyage">Bon voyage!</h3>
 
   <!-- Button trigger for sign-up modal -->
-  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-up-modal">
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-up-modal" id="sign-up-button">
                Sign Up
              </button>
   <!-- Modal sign-up -->
@@ -54,7 +54,7 @@
   </div>
 
   <!-- Button trigger for sign-in modal -->
-  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-in-modal">
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
           Sign In
         </button>
   <!-- Modal sign-in -->
@@ -83,7 +83,7 @@
   </div>
 
   <!-- Button trigger for change password modal -->
-  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#change-password-modal">
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#change-password-modal" id="change-password-button">
                Change Password
              </button>
   <!-- Modal change password -->
@@ -115,7 +115,7 @@
   <button type="button" id="sign-out-button" class="btn btn-danger">Sign Out</button>
 
   <!-- Button trigger update entry modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal" id="journal-entry-button">
   Journal Entry
   </button>
 
@@ -235,7 +235,7 @@
           <div class="form-group">
             <label for="example-time-input" class="col-2 col-form-label">Time</label>
             <div class="col-10">
-              <input class="form-control" type="time" name="journal[time]" placeholder="13:45:00" id="time-input">
+              <input class="form-control" type="time" name="journal[time]" placeholder="3:20 PM" id="time-input">
             </div>
           </div>
       <div class="modal-footer">
@@ -249,7 +249,10 @@
   </div>
 
 <!-- For auth messages -->
-  <p id="message"></p>
+<div id="success-message" class="alert alert-success" role="alert"></div>
+<div id="failure-message" class="alert alert-danger" role="alert"></div>
+
+  <p></p>
 
 <!-- Get all entries -->
   <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
@@ -262,7 +265,7 @@
 
 <!-- Get one entry -->
   <div>
-    <form class="navbar-form navbar-left" id="get-entry">
+    <form class="navbar-form navbar-left" id="get-entry-form">
       <div class="form-group">
         <input type="number" class="form-control" name="journal[id]" placeholder="Search Entries by ID">
       </div>
@@ -359,7 +362,7 @@
             <div class="form-group">
               <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
               <div class="col-10">
-                <input id="loc-update-input" class="form-control" type="text" name="journal[location_name]" placeholder="Beach">
+                <input id="loc-update-input" class="form-control" type="text" name="journal[location_name]">
               </div>
             </div>
             <fieldset class="form-group">
@@ -388,7 +391,7 @@
             <div class="form-group ">
               <label for="example-text-input" class="col-2 col-form-label">Comments</label>
               <div class="col-10">
-                <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="comments-update-input">
+                <input class="form-control" type="text" name="journal[comments]" id="comments-update-input">
               </div>
             </div>
             <!-- <div class="form-group">

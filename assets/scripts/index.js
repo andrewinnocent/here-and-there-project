@@ -10,6 +10,7 @@ $(() => {
   setAPIOrigin(location, config)
   eventHandlers.authHandlers()
   eventHandlers.entryHandlers()
+  eventHandlers.notSignedIn()
 })
 
 // // use require with a reference to bundle the file and use it in this file
