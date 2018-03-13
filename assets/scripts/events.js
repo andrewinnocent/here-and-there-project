@@ -89,20 +89,18 @@ const onGetEntry = (event) => {
   $('#get-entry').get(0).reset()
 }
 
-// To open update entry modal (same as create modal)
+// To open update entry modal from DOM
 const onOpenUpdate = (event) => {
   event.preventDefault()
+  // Store entry ID
   const id = event.target.dataset.id
   console.log(id)
+  // Use that ID for a GET request
   api.getOneEntryDOM(id)
+    // store.journal is defined here
     .then(ui.getEntrySuccess)
     .then(onPopulateUpdate)
-  // console.log($('.journal-update').data().id)
-  // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
-  // $('#entry-modal').modal()
-  // api.updateEntry(id)
-  //   .then(() => api.getAllEntries(event))
-  //   .then(ui.updateEntrySuccess)
+  $('#get-entry').get(0).reset()
 }
 
 // To populate the form with submitted responses once update form is viewable
