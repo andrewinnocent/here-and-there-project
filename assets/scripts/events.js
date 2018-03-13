@@ -89,7 +89,7 @@ const onGetEntry = (event) => {
   $('#get-entry').get(0).reset()
 }
 
-// To open update entry modal from DOM
+// To open update entry modal from DOM with ID in hidden input field
 const onOpenUpdate = (event) => {
   event.preventDefault()
   // Store entry ID
@@ -100,7 +100,7 @@ const onOpenUpdate = (event) => {
     // store.journal is defined here
     .then(ui.getEntrySuccess)
     .then(onPopulateUpdate)
-  $('#get-entry').get(0).reset()
+  $('#journal-update-form').get(0).reset()
 }
 
 // To populate the form with submitted responses once update form is viewable
@@ -110,7 +110,7 @@ const onPopulateUpdate = () => {
   $('#id-update-input').val(journal.id)
   $('#state-update-input').val(journal.state)
   $('#loc-update-input').val(journal.location_name)
-  $('.rating-update-input').val(journal.rating)
+  // $('.rating-update-input').val(journal.rating)
   $('#comments-update-input').val(journal.comments)
   $('#date-update-input').val(journal.date)
   $('#time-update-input').val(journal.time)
@@ -121,7 +121,8 @@ const onUpdateEntry = (event) => {
   event.preventDefault()
   // const id = event.target.dataset.id
   const data = getFormFields(event.target)
-  console.log('Submitted')
+  $('.rating-update-input').val()
+  console.log($('#rate-update-three').val())
   // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
   $('#update-entry-modal').modal('hide')
   api.updateEntry(data)
@@ -153,12 +154,9 @@ const entryHandlers = () => {
   $('#get-entry').on('submit', onGetEntry)
   // Must use .on for delegated events
   $('.get-entries').on('click', '.entry-update-button', onOpenUpdate)
-  // $('.get-entries').on('click', '.entry-update-button',).data().value
-  // $('#journal-entry-form').on('submit', onUpdateEntry)
+  $('#journal-update-form').on('submit', onUpdateEntry)
   $('.get-entries').on('click', '.entry-delete-button', onDeleteEntry)
   $('#clear-entries-button').click(onClearEntries)
-  // Update test
-  $('#journal-update-form').on('submit', onUpdateEntry)
 }
 
 module.exports = {

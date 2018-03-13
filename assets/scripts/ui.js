@@ -110,6 +110,7 @@ const updateEntrySuccess = function (data) {
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
   $('.get-entries').css('background-color', '#8fff90')
+  console.log(data.journals)
   store.journals = data.journals
 }
 
