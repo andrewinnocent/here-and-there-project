@@ -66,7 +66,7 @@ const onSubmitEntry = function (event) {
   api.createEntry(data)
     .then(ui.entrySubmitSuccess)
     .catch(ui.entrySubmitFailure)
-  $('#create-entry-form').get(0).reset()
+  $('#journal-entry-form').get(0).reset()
 }
 
 // Get all journal entries
@@ -88,21 +88,30 @@ const onGetEntry = (event) => {
   $('#get-entry').get(0).reset()
 }
 
-// Update an entry
-const onUpdateEntry = (event) => {
+// To open update entry modal (same as create modal)
+const onOpenUpdate = (event) => {
   event.preventDefault()
-  console.log('clicked')
-  // const id = event.target.dataset.id
-  // // console.log(id)
+  const id = event.target.dataset.id
+  console.log(id)
+  // console.log($('.journal-update').data().id)
+  // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
+  // $('#entry-modal').modal()
   // api.updateEntry(id)
   //   .then(() => api.getAllEntries(event))
   //   .then(ui.updateEntrySuccess)
 }
 
-// Clear button
-const onClearEntries = (event) => {
+// Update entry
+const onUpdateEntry = (event) => {
   event.preventDefault()
-  ui.clearEntries()
+  // const id = event.target.dataset.id
+  const data = getFormFields(event.target)
+  console.log(data.id)
+  // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
+  $('#update-entry-modal').modal('hide')
+  api.updateEntry(data)
+    .then(() => api.getAllEntries(event))
+    .then(ui.updateEntrySuccess)
 }
 
 // Delete an entry
@@ -116,16 +125,25 @@ const onDeleteEntry = (event) => {
     .catch(ui.deleteEntryFailure)
 }
 
+// Clear button
+const onClearEntries = (event) => {
+  event.preventDefault()
+  ui.clearEntries()
+}
+
 // Journal entry handlers
 const entryHandlers = () => {
-  $('#create-entry-form').on('submit', onSubmitEntry)
+  $('#journal-entry-form').on('submit', onSubmitEntry)
   $('#get-entries-button').click(onGetEntries)
   $('#get-entry').on('submit', onGetEntry)
-  $('#clear-entries-button').click(onClearEntries)
-  // $('.get-entries').click('#entry-update-button', onUpdateEntry)
   // Must use .on for delegated events
-  $('.get-entries').on('click', '.entry-update-button', onUpdateEntry)
+  $('.get-entries').on('click', '.entry-update-button', onOpenUpdate)
+  // $('.get-entries').on('click', '.entry-update-button',).data().value
+  // $('#journal-entry-form').on('submit', onUpdateEntry)
   $('.get-entries').on('click', '.entry-delete-button', onDeleteEntry)
+  $('#clear-entries-button').click(onClearEntries)
+  // Update test
+  $('#journal-update-form').on('submit', onUpdateEntry)
 }
 
 module.exports = {

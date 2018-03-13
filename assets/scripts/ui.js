@@ -102,11 +102,6 @@ const getEntryFailure = function () {
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
-// To clear entries in DOM
-const clearEntries = () => {
-  $('.get-entries').empty()
-}
-
 // Update one journal entry messages
 const updateEntrySuccess = function (data) {
 // Clear DOM of entries
@@ -134,6 +129,11 @@ const deleteEntryFailure = () => {
   $('#get-entries-message').css('background-color', '#ff91A3')
 }
 
+// To clear entries in DOM
+const clearEntries = () => {
+  $('.get-entries').empty()
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -149,8 +149,8 @@ module.exports = {
   getEntriesFailure,
   getEntrySuccess,
   getEntryFailure,
-  clearEntries,
   updateEntrySuccess,
   deleteEntrySuccess,
-  deleteEntryFailure
+  deleteEntryFailure,
+  clearEntries
 }
