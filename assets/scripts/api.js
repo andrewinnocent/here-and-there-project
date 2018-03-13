@@ -89,6 +89,19 @@ const getOneEntry = function (data) {
   })
 }
 
+// Get one journal entry from DOM to be able to populate data into form for update
+const getOneEntryDOM = function (data) {
+  // console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/journals/' + data,
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // Update one journal entry
 const updateEntry = function (data) {
   return $.ajax({
@@ -124,5 +137,6 @@ module.exports = {
   getAllEntries,
   getOneEntry,
   updateEntry,
-  deleteEntry
+  deleteEntry,
+  getOneEntryDOM
 }

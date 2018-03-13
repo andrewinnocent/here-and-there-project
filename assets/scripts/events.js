@@ -3,6 +3,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
+const store = require('./store')
 
 // Sign up events
 const onSignUp = function (event) {
@@ -93,6 +94,9 @@ const onOpenUpdate = (event) => {
   event.preventDefault()
   const id = event.target.dataset.id
   console.log(id)
+  api.getOneEntryDOM(id)
+    .then(ui.getEntrySuccess)
+    .then(onPopulateUpdate)
   // console.log($('.journal-update').data().id)
   // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
   // $('#entry-modal').modal()
@@ -101,12 +105,25 @@ const onOpenUpdate = (event) => {
   //   .then(ui.updateEntrySuccess)
 }
 
+// To populate the form with submitted responses once update form is viewable
+const onPopulateUpdate = () => {
+  const journal = store.journal
+  console.log(journal.id)
+  $('#id-update-input').val(journal.id)
+  $('#state-update-input').val(journal.state)
+  $('#loc-update-input').val(journal.location_name)
+  $('.rating-update-input').val(journal.rating)
+  $('#comments-update-input').val(journal.comments)
+  $('#date-update-input').val(journal.date)
+  $('#time-update-input').val(journal.time)
+}
+
 // Update entry
 const onUpdateEntry = (event) => {
   event.preventDefault()
   // const id = event.target.dataset.id
   const data = getFormFields(event.target)
-  console.log(data.id)
+  console.log('Submitted')
   // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
   $('#update-entry-modal').modal('hide')
   api.updateEntry(data)
