@@ -58,9 +58,15 @@
     </li>
 
     <div>
-      <button type="button" class="journal-delete btn btn-danger" id="entry-delete-button" data-id={{journal.id}}>
+      <button class="journal-delete btn btn-danger entry-delete-button" class="entry-delete-button" data-id={{journal.id}}>
         Delete
       </button>
+    </div>
+
+    <div>
+      <button type="button" class="journal-update btn btn-default entry-update-button" data-id={{journal.id}}>
+      Update
+    </button>
     </div>
   </ul>
 

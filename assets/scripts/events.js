@@ -88,21 +88,21 @@ const onGetEntry = (event) => {
   $('#get-entry').get(0).reset()
 }
 
-// Clear button
-const onClearEntries = (event) => {
-  event.preventDefault()
-  ui.clearEntries()
-}
-
 // Update an entry
 const onUpdateEntry = (event) => {
   event.preventDefault()
   console.log('clicked')
-  const id = event.target.dataset.id
-  // console.log(id)
-  api.updateEntry(id)
+  // const id = event.target.dataset.id
+  // // console.log(id)
+  // api.updateEntry(id)
   //   .then(() => api.getAllEntries(event))
   //   .then(ui.updateEntrySuccess)
+}
+
+// Clear button
+const onClearEntries = (event) => {
+  event.preventDefault()
+  ui.clearEntries()
 }
 
 // Delete an entry
@@ -123,8 +123,9 @@ const entryHandlers = () => {
   $('#get-entry').on('submit', onGetEntry)
   $('#clear-entries-button').click(onClearEntries)
   // $('.get-entries').click('#entry-update-button', onUpdateEntry)
-  $('#entry-update-button').click(onUpdateEntry)
-  $('.get-entries').click('#entry-delete-button', onDeleteEntry)
+  // Must use .on for delegated events
+  $('.get-entries').on('click', '.entry-update-button', onUpdateEntry)
+  $('.get-entries').on('click', '.entry-delete-button', onDeleteEntry)
 }
 
 module.exports = {
