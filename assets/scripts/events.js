@@ -6,7 +6,7 @@ const ui = require('./ui')
 const store = require('./store')
 
 // Buttons to show/hide when not logged in
-const notSignedIn = function () {
+const notSignedIn = () => {
   $('#success-message').hide()
   $('#failure-message').hide()
   $('#sign-in-button').show()
@@ -17,6 +17,8 @@ const notSignedIn = function () {
   $('#get-entries-button').hide()
   $('#clear-entries-button').hide()
   $('#get-entry-form').hide()
+  $('#small-blurb').hide()
+  $('#big-blurb').show()
 }
 
 // Sign up events
@@ -48,6 +50,8 @@ const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
+    .then(ui.clearEntries)
+    .then(notSignedIn)
     .catch(ui.signOutFailure)
 }
 
@@ -124,7 +128,6 @@ const onPopulateUpdate = () => {
   $('#id-update-input').val(journal.id)
   $('#state-update-input').val(journal.state)
   $('#loc-update-input').val(journal.location_name)
-  // $('.rating-update-input').val(journal.rating)
   $('#comments-update-input').val(journal.comments)
   $('#date-update-input').val(journal.date)
   $('#time-update-input').val(journal.time)
@@ -133,11 +136,10 @@ const onPopulateUpdate = () => {
 // Update entry
 const onUpdateEntry = (event) => {
   event.preventDefault()
-  // const id = event.target.dataset.id
   const data = getFormFields(event.target)
   $('.rating-update-input').val()
   console.log($('#rate-update-three').val())
-  // Opens modal with entry form. Need to figure out how to switch buttons to send to update API.
+  // Opens modal with entry form.
   $('#update-entry-modal').modal('hide')
   api.updateEntry(data)
     .then(() => api.getAllEntries(event))

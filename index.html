@@ -18,10 +18,38 @@
   <h2 id="subheading">A Travel Journal</h2>
 
     <!-- H&T Blurb -->
-    <p>Welcome! Keep a travel journal easily with this handy-dandy web app. You can create, view, delete, and update your journal entries from traveling all across the good ol' US of A!</p>
+    <p id="big-blurb">Welcome! Keep a travel journal easily with this handy-dandy web app. You can create, view, delete, and update your journal entries from traveling all across the good ol' US of A!</p>
 
-    <p id="quote">Though "a picture is worth a thousand words," you should write them down!</p>
-    <h3 id="bon-voyage">Bon voyage!</h3>
+    <p id="small-blurb">Though "a picture is worth a thousand words," you should write them down!</p>
+
+  <!-- Button trigger for sign-in modal -->
+  <button type="button" class="btn btn-info navbar-btn" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
+          Log In
+        </button>
+  <!-- Modal sign-in -->
+  <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign-in-label">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" id="sign-in-form">
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" name="credentials[email]" placeholder="example@email.com">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="credentials[password]" placeholder="password">
+              <button type="submit" class="btn btn-default">Sign In!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Button trigger for sign-up modal -->
   <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-up-modal" id="sign-up-button">
@@ -53,67 +81,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Button trigger for sign-in modal -->
-  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
-          Log In
-        </button>
-  <!-- Modal sign-in -->
-  <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="sign-in-label">Sign In</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-        </div>
-        <div class="modal-body">
-          <form class="form-inline" id="sign-in-form">
-            <div class="form-group">
-              <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" name="credentials[email]" placeholder="example@email.com">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" name="credentials[password]" placeholder="password">
-              <button type="submit" class="btn btn-default">Sign In!</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Button trigger for change password modal -->
-  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#change-password-modal" id="change-password-button">
-               Change Password
-             </button>
-  <!-- Modal change password -->
-  <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="change-password-label">Change Password</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                     </button>
-        </div>
-        <div class="modal-body">
-          <form class="form-inline" id="change-password-form">
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" name="passwords[old]" placeholder="old password">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" name="passwords[new]" placeholder="new password">
-              <button type="submit" class="btn btn-default">Change Password</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Button trigger for sign-out -->
-  <button type="button" id="sign-out-button" class="btn btn-danger">Sign Out</button>
 
   <!-- Button trigger update entry modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal" id="journal-entry-button">
@@ -249,20 +216,41 @@
   </div>
   </div>
 
+  <!-- Button trigger for change password modal -->
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#change-password-modal" id="change-password-button">
+               Change Password
+             </button>
+  <!-- Modal change password -->
+  <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change-password-label">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" id="change-password-form">
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="passwords[old]" placeholder="old password">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="passwords[new]" placeholder="new password">
+              <button type="submit" class="btn btn-default">Change Password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger for sign-out -->
+  <button type="button" id="sign-out-button" class="btn btn-danger">Sign Out</button>
+
 <!-- For auth messages -->
 <div id="success-message" class="alert alert-success" role="alert"></div>
 <div id="failure-message" class="alert alert-danger" role="alert"></div>
-
-  <p></p>
-
-<!-- Get all entries -->
-  <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
-
-  <button type="button" class="btn btn-light" id="clear-entries-button">Clear</button>
-
-<!-- Show entries -->
-  <div class="get-entries">
-  </div>
 
 <!-- Get one entry -->
   <div>
@@ -275,18 +263,21 @@
     </form>
   </div>
 
-  <!-- Update Entry -->
-  <!-- <div>
-    <button type="button" class="journal-update btn btn-default" id="entry-update-button">
-    Update
-  </button>
-  </div> -->
+<!-- Get all entries -->
+  <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
+
+  <button type="button" class="btn btn-light" id="clear-entries-button">Clear</button>
+
+<!-- Show entries -->
+  <div class="get-entries">
+  </div>
 
 
   <p id="get-entries-message"></p>
 
 
-    <!-- Update modal form -->
+
+    <!-- Update modal form: trigger button in DOM -->
     <div class="modal fade" id="update-entry-modal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

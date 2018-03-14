@@ -6,7 +6,7 @@ const indexJournalTemplate = require('./templates/helpers/journal-listing.handle
 
 // Sign-up messages
 const signUpSuccess = function (data) {
-  $('#success-message').text('Success! Log In to Start Journaling!').fadeIn().fadeOut(5000)
+  $('#success-message').text('Success! Log In to Start Journaling!').fadeIn().fadeOut(3000)
 }
 
 const signUpFailure = function () {
@@ -15,7 +15,7 @@ const signUpFailure = function () {
 
 // Sign-in messages
 const signInSuccess = function (data) {
-  $('#success-message').text('👋 Welcome, User ' + data.user.email + '!').fadeIn().fadeOut(5000)
+  $('#success-message').text('👋 Welcome, User ' + data.user.email + '!').fadeIn().fadeOut(3000)
   // Buttons to show when signed in
   $('#sign-in-button').hide()
   $('#sign-up-button').hide()
@@ -25,6 +25,8 @@ const signInSuccess = function (data) {
   $('#get-entries-button').show()
   $('#clear-entries-button').show()
   $('#get-entry-form').show()
+  $('#small-blurb').show()
+  $('#big-blurb').hide()
   store.user = data.user
 }
 
@@ -38,12 +40,12 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function () {
-  $('#failure-message').text('Uh oh... Try That Again').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Uh oh... Are You Signed In?').fadeIn().fadeOut(3000)
 }
 
 // Change password messages
 const changePasswordSuccess = function () {
-  $('#success-message').text('Changed Password Successfully').fadeIn().fadeOut(3000)
+  $('#success-message').text('Well done!').fadeIn().fadeOut(3000)
 }
 
 const changePasswordFailure = function () {
@@ -66,7 +68,6 @@ const getEntriesSuccess = function (data) {
   // Referencing handlebars
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
-  $('.get-entries').css('background-color', '#8fff90')
   store.journals = data.journals
 }
 
@@ -81,7 +82,6 @@ const getEntrySuccess = function (data) {
   console.log(data.journal)
   const indexJournalHtml = indexJournalTemplate({journal: data.journal})
   $('.get-entries').append(indexJournalHtml)
-  $('.get-entries').css('background-color', '#8fff90')
   store.journal = data.journal
 }
 

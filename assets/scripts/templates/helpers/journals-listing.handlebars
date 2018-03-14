@@ -1,8 +1,10 @@
 {{#each journals as |journal|}}
-
-  <h4>Journal {{journal.id}}</h4>
-  <ul class="entries-listing" data-id={{journal.id}}>
-    <li>
+<h2></h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" data-id={{journal.id}}>{{journal.location_name}} in {{journal.state}}</h3>
+    </div>
+    <div class="panel-body">
       <div>
         {{#if journal.state}}
           State: {{journal.state}}
@@ -10,8 +12,6 @@
           No state provided.
         {{/if}}
       </div>
-    </li>
-    <li>
       <div>
         {{#if journal.location_name}}
           Location: {{journal.location_name}}
@@ -19,8 +19,6 @@
           No location provided.
         {{/if}}
       </div>
-    </li>
-    <li>
       <div>
         {{#if journal.rating}}
           Rating: {{journal.rating}}
@@ -28,8 +26,6 @@
           No rating provided.
         {{/if}}
       </div>
-    </li>
-    <li>
       <div>
         {{#if journal.comments}}
           Comments: {{journal.comments}}
@@ -37,8 +33,6 @@
           No comments provided.
         {{/if}}
       </div>
-    </li>
-    <li>
       <div>
         {{#if journal.date}}
           Date: {{journal.date}}
@@ -46,8 +40,6 @@
           No date provided.
         {{/if}}
       </div>
-    </li>
-    <li>
       <div>
         {{#if journal.time}}
           Time: {{journal.time}}
@@ -55,19 +47,16 @@
           No time provided.
         {{/if}}
       </div>
-    </li>
 
-    <div>
       <button class="journal-delete btn btn-danger entry-delete-button" class="entry-delete-button" data-id={{journal.id}}>
         Delete
       </button>
-    </div>
 
-    <div>
-      <button type="button" class="journal-update btn btn-default entry-update-button" data-id={{journal.id}} data-target="#update-entry-modal" data-toggle="modal">
+      <button type="button" class="journal-update btn btn-info entry-update-button" data-id={{journal.id}} data-target="#update-entry-modal" data-toggle="modal">
       Update
-    </button>
+      </button>
+
     </div>
-  </ul>
+  </div>
 
 {{/each}}
