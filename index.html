@@ -82,7 +82,7 @@
     </div>
   </div>
 
-  <!-- Button trigger update entry modal -->
+  <!-- Button trigger entry modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal" id="journal-entry-button">
   Journal Entry
   </button>
@@ -100,7 +100,7 @@
       <div class="modal-body">
         <form id="journal-entry-form">
           <div class="form-group">
-            <select name="journal[state]" id="state-input">
+            <select name="journal[state]" id="state-input" required>
       <option value="" selected="selected">Select a State</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
@@ -158,14 +158,14 @@
           <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
             <div class="col-10">
-              <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach">
+              <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach" required>
             </div>
           </div>
           <fieldset class="form-group">
             <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
             <div class="form-select">
               <label class="form-check-label">
-   <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"> 😠</label>
+   <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"  required> 😠</label>
             </div>
             <div class="form-select">
               <label class="form-check-label rating">
@@ -187,7 +187,7 @@
           <div class="form-group ">
             <label for="example-text-input" class="col-2 col-form-label">Comments</label>
             <div class="col-10">
-              <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" id="test-input">
+              <input class="form-control" type="text" name="journal[comments]" placeholder="Go ahead... Journal away!" required>
             </div>
           </div>
           <!-- <div class="form-group">
@@ -292,7 +292,7 @@
               </div>
             </div>
             <div class="form-group">
-              <select name="journal[state]" id="state-update-input">
+              <select name="journal[state]" id="state-update-input"  required>
         <option value="" selected="selected">Select a State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -350,14 +350,14 @@
             <div class="form-group">
               <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
               <div class="col-10">
-                <input id="loc-update-input" class="form-control" type="text" name="journal[location_name]">
+                <input id="loc-update-input" class="form-control" type="text" name="journal[location_name]" required>
               </div>
             </div>
             <fieldset class="form-group">
               <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
               <div class="form-select">
                 <label class="form-check-label">
-     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value="1" id="rate-update-one"> 😠</label>
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value="1" id="rate-update-one" required> 😠</label>
               </div>
               <div class="form-select">
                 <label class="form-check-label rating">
@@ -379,7 +379,7 @@
             <div class="form-group ">
               <label for="example-text-input" class="col-2 col-form-label">Comments</label>
               <div class="col-10">
-                <input class="form-control" type="text" name="journal[comments]" id="comments-update-input">
+                <input class="form-control" type="text" name="journal[comments]" id="comments-update-input" required>
               </div>
             </div>
             <!-- <div class="form-group">
