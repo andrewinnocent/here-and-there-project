@@ -9,6 +9,7 @@ const store = require('./store')
 const notSignedIn = () => {
   ui.signOutSuccess()
   $('#failure-message').hide()
+  $('.failure-message').hide()
   $('#sign-in-button').show()
   $('#sign-up-button').show()
   $('#change-password-button').hide()
@@ -19,6 +20,11 @@ const notSignedIn = () => {
   $('#get-entry-form').hide()
   $('#small-blurb').hide()
   $('#big-blurb').show()
+}
+// Clear forms when partially completed
+const onClearForms = () => {
+  $('#sign-up-form').get(0).reset()
+  $('#sign-in-form').get(0).reset()
 }
 
 // Sign up events
@@ -102,7 +108,6 @@ const onGetEntries = function (event) {
 const onGetEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  $(this).prop('disabled', true)
   // console.log(data) // object with journal as key and value of object with ID requested.
   ui.clearEntries()
   api.getOneEntry(data)
@@ -170,6 +175,8 @@ const onClearEntries = (event) => {
 
 // Journal entry handlers
 const entryHandlers = () => {
+  $('#sign-in-button').click(onClearForms)
+  $('#sign-up-button').click(onClearForms)
   $('#journal-entry-form').on('submit', onSubmitEntry)
   $('#get-entries-button').click(onGetEntries)
   $('#get-entry-form').on('submit', onGetEntry)

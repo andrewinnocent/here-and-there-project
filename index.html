@@ -15,17 +15,19 @@
 
 <body class="container-fluid">
   <h1 id="heading">Here & There!</h1>
-  <h2 id="subheading">A Travel Journal</h2>
+  <h3 id="subheading">A Travel Journal</h2>
 
     <!-- H&T Blurb -->
     <p id="big-blurb">Welcome! Keep a travel journal easily with this handy-dandy web app. You can create, view, delete, and update your journal entries from traveling all across the good ol' US of A!</p>
 
-    <p id="small-blurb">Though "a picture is worth a thousand words," you should write them down!</p>
+    <p id="small-blurb">Though "a picture is worth a thousand words," you should really write them down!</p>
 
   <!-- Button trigger for sign-in modal -->
-  <button type="button" class="btn btn-info navbar-btn" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
+<div class="text-center">
+  <button type="button" class="btn btn-info navbar-btn sign-in-button" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
           Log In
         </button>
+</div>
   <!-- Modal sign-in -->
   <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -52,9 +54,11 @@
   </div>
 
   <!-- Button trigger for sign-up modal -->
+  <div class="text-center">
   <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-up-modal" id="sign-up-button">
                Sign Up
              </button>
+  </div>
   <!-- Modal sign-up -->
   <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -248,15 +252,18 @@
   <!-- Button trigger for sign-out -->
   <button type="button" id="sign-out-button" class="btn btn-danger">Sign Out</button>
 
-<!-- For auth messages -->
+<!-- For alert messages -->
 <div id="success-message" class="alert alert-success" role="alert"></div>
 <div id="failure-message" class="alert alert-danger" role="alert"></div>
+<!-- This is specifically for getEntryFailure. It doesn't work with a div or id!? -->
+<p class="alert alert-danger failure-message" role="alert"></p>
 
 
 
   <!-- Get one entry -->
+
     <div>
-      <form class="navbar-form navbar-left" id="get-entry-form">
+      <form class="form-inline" id="get-entry-form">
         <div class="form-group">
           <input type="number" class="form-control" name="journal[id]" placeholder="Get Entry by ID" required>
         </div>
@@ -276,7 +283,6 @@
 <!-- Show entries -->
   <div class="get-entries">
   </div>
-
 
     <!-- Update modal form: trigger button in DOM -->
     <div class="modal fade" id="update-entry-modal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel" aria-hidden="true">

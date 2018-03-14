@@ -64,7 +64,7 @@ const entrySubmitFailure = function () {
 // Get all journal entries messages
 const getEntriesSuccess = function (data) {
 // data.journals is an array of objects
-  console.log(data.journals)
+  // console.log(data.journals)
   // Referencing handlebars
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
@@ -84,8 +84,9 @@ const getEntrySuccess = function (data) {
   store.journal = data.journal
 }
 
-const getEntryFailure = function () {
-  $('#failure-message').text('Ah! Entry Doesn\'t Exist - Try Again')
+const getEntryFailure = function (data) {
+  // $('.failure-message').show()
+  $('.failure-message').text('Entry Doesn\'t Exist - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Update one journal entry messages
