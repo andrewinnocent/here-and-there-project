@@ -104,7 +104,7 @@ const updateEntrySuccess = function (data) {
 const deleteEntrySuccess = function (data) {
 // Clear DOM of entries
   $('.get-entries').empty()
-  $('#success-message').text('It\'s Gone Forever!').fadeIn().fadeOut(3000)
+  $('#success-message').text('😭 It\'s Gone Forever!').fadeIn().fadeOut(3000)
   // Reload DOM of remaining entries
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').prepend(indexJournalsHtml)

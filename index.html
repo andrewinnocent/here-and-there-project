@@ -253,21 +253,25 @@
 <div id="failure-message" class="alert alert-danger" role="alert"></div>
 
 
-<!-- Get all entries -->
-  <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
-
-  <button type="button" class="btn btn-light" id="clear-entries-button">Clear</button>
 
   <!-- Get one entry -->
     <div>
       <form class="navbar-form navbar-left" id="get-entry-form">
         <div class="form-group">
-          <input type="number" class="form-control" name="journal[id]" placeholder="Search Entries by ID" required>
+          <input type="number" class="form-control" name="journal[id]" placeholder="Get Entry by ID" required>
         </div>
         <button type="submit" id="get-entry-button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>   Find
         </button>
       </form>
     </div>
+
+    <!-- Get all entries -->
+    <div>
+      <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
+
+      <button type="button" class="btn btn-light" id="clear-entries-button">Clear</button>
+    </div>
+
 
 <!-- Show entries -->
   <div class="get-entries">
