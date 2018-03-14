@@ -36,7 +36,7 @@ const signInFailure = function () {
 
 // Sign-out messages
 const signOutSuccess = function () {
-  $('#success-message').text('✌ See you later!').fadeIn().fadeOut(3000)
+  $('#success-message').text('✌ See you later!').toggle().fadeOut(3000)
 }
 
 const signOutFailure = function () {
@@ -72,8 +72,7 @@ const getEntriesSuccess = function (data) {
 }
 
 const getEntriesFailure = function () {
-  $('#get-entries-message').text('Go Ahead And Try Again')
-  $('#get-entries-message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Go Ahead And Try Again')
 }
 
 // Get one journal entry messages
@@ -86,8 +85,7 @@ const getEntrySuccess = function (data) {
 }
 
 const getEntryFailure = function () {
-  $('#get-entries-message').text('Ah! Entry Doesn\'t Exist - Try Again')
-  $('#get-entries-message').css('background-color', '#ff91A3')
+  $('#failure-message').text('Ah! Entry Doesn\'t Exist - Try Again')
 }
 
 // Update one journal entry messages
@@ -97,8 +95,7 @@ const updateEntrySuccess = function (data) {
   // Reload DOM of remaining entries
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
-  $('.get-entries').css('background-color', '#8fff90')
-  console.log(data.journals)
+  // console.log(data.journals)
   store.journals = data.journals
 }
 
@@ -109,13 +106,11 @@ const deleteEntrySuccess = function (data) {
   // Reload DOM of remaining entries
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
-  $('.get-entries').css('background-color', '#8fff90')
   store.journals = data.journals
 }
 
 const deleteEntryFailure = () => {
-  $('#get-entries-message').text('It Won\'t Go Away - Try Again')
-  $('#get-entries-message').css('background-color', '#ff91A3')
+  $('#failure-message').text('It Won\'t Go Away - Try Again')
 }
 
 // To clear entries in DOM

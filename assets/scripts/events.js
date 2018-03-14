@@ -7,7 +7,7 @@ const store = require('./store')
 
 // Buttons to show/hide when not logged in
 const notSignedIn = () => {
-  $('#success-message').hide()
+  ui.signOutSuccess()
   $('#failure-message').hide()
   $('#sign-in-button').show()
   $('#sign-up-button').show()
@@ -26,7 +26,7 @@ const onSignUp = function (event) {
   event.preventDefault()
   $('#sign-up-modal').modal('hide')
   const data = getFormFields(this)
-  console.log(data)
+  // console.log(data)
   $('#sign-up-form').get(0).reset()
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -38,7 +38,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   $('#sign-in-modal').modal('hide')
   const data = getFormFields(this)
-  console.log(data)
+  // console.log(data)
   $('#sign-in-form').get(0).reset()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -49,9 +49,9 @@ const onSignIn = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
-    .then(ui.signOutSuccess)
-    .then(ui.clearEntries)
+    // .then(ui.signOutSuccess)
     .then(notSignedIn)
+    .then(ui.clearEntries)
     .catch(ui.signOutFailure)
 }
 
@@ -81,7 +81,7 @@ const onSubmitEntry = function (event) {
   $('#entry-modal').modal('hide')
   // The following get is to get the integer values assigned to radio buttons in order for API response to show it. Previously, showed "on" instead. Oddly, I can comment it out and it will continue to return the integer. I had to run it first and test then could remove it and it would still work. Weird (to me).
   // $('.rating').val()
-  console.log(data)
+  // console.log(data)
   api.createEntry(data)
     .then(ui.entrySubmitSuccess)
     .catch(ui.entrySubmitFailure)
@@ -100,11 +100,11 @@ const onGetEntries = function (event) {
 const onGetEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data) // object with journal as key and value of object with ID requested.
+  // console.log(data) // object with journal as key and value of object with ID requested.
   api.getOneEntry(data)
     .then(ui.getEntrySuccess)
     .catch(ui.getEntryFailure)
-  $('#get-entry').get(0).reset()
+  $('#get-entry-form').get(0).reset()
 }
 
 // To open update entry modal from DOM with ID in hidden input field
@@ -112,7 +112,7 @@ const onOpenUpdate = (event) => {
   event.preventDefault()
   // Store entry ID
   const id = event.target.dataset.id
-  console.log(id)
+  // console.log(id)
   // Use that ID for a GET request
   api.getOneEntryDOM(id)
     // store.journal is defined here
@@ -167,7 +167,7 @@ const onClearEntries = (event) => {
 const entryHandlers = () => {
   $('#journal-entry-form').on('submit', onSubmitEntry)
   $('#get-entries-button').click(onGetEntries)
-  $('#get-entry').on('submit', onGetEntry)
+  $('#get-entry-form').on('submit', onGetEntry)
   // Must use .on for delegated events
   $('.get-entries').on('click', '.entry-update-button', onOpenUpdate)
   $('#journal-update-form').on('submit', onUpdateEntry)
