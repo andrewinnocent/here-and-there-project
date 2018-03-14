@@ -133,7 +133,7 @@ const onOpenUpdate = (event) => {
 // To populate the form with submitted responses once update form is viewable
 const onPopulateUpdate = () => {
   const journal = store.journal
-  console.log(journal.id)
+  // console.log(journal.id)
   $('#id-update-input').val(journal.id)
   $('#state-update-input').val(journal.state)
   $('#loc-update-input').val(journal.location_name)
@@ -147,7 +147,7 @@ const onUpdateEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   $('.rating-update-input').val()
-  console.log($('#rate-update-three').val())
+  // console.log($('#rate-update-three').val())
   // Opens modal with entry form.
   $('#update-entry-modal').modal('hide')
   api.updateEntry(data)
