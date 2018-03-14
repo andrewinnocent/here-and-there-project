@@ -91,6 +91,8 @@ const onSubmitEntry = function (event) {
 // Get all journal entries
 const onGetEntries = function (event) {
   event.preventDefault()
+  $(this).prop('disabled', true)
+  ui.clearEntries()
   api.getAllEntries()
     .then(ui.getEntriesSuccess)
     .catch(ui.getEntriesFailure)
@@ -100,7 +102,9 @@ const onGetEntries = function (event) {
 const onGetEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
+  $(this).prop('disabled', true)
   // console.log(data) // object with journal as key and value of object with ID requested.
+  ui.clearEntries()
   api.getOneEntry(data)
     .then(ui.getEntrySuccess)
     .catch(ui.getEntryFailure)
@@ -160,6 +164,7 @@ const onDeleteEntry = (event) => {
 // Clear button
 const onClearEntries = (event) => {
   event.preventDefault()
+  $('#get-entries-button').prop('disabled', false)
   ui.clearEntries()
 }
 

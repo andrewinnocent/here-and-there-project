@@ -78,7 +78,7 @@ const getEntriesFailure = function () {
 // Get one journal entry messages
 const getEntrySuccess = function (data) {
 // data.journal is an object with journal as key and object with ID requested as value.
-  console.log(data.journal)
+  // console.log(data.journal)
   const indexJournalHtml = indexJournalTemplate({journal: data.journal})
   $('.get-entries').append(indexJournalHtml)
   store.journal = data.journal
@@ -92,6 +92,7 @@ const getEntryFailure = function () {
 const updateEntrySuccess = function (data) {
 // Clear DOM of entries
   $('.get-entries').empty()
+  $('#success-message').text('Done!').fadeIn().fadeOut(3000)
   // Reload DOM of remaining entries
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
@@ -103,9 +104,10 @@ const updateEntrySuccess = function (data) {
 const deleteEntrySuccess = function (data) {
 // Clear DOM of entries
   $('.get-entries').empty()
+  $('#success-message').text('It\'s Gone Forever!').fadeIn().fadeOut(3000)
   // Reload DOM of remaining entries
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
-  $('.get-entries').append(indexJournalsHtml)
+  $('.get-entries').prepend(indexJournalsHtml)
   store.journals = data.journals
 }
 
