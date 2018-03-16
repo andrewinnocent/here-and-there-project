@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Here & There! A Travel Journal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <h1 id="heading">Here & There!</h1>
+  <h3 id="subheading">A Travel Journal</h2>
+
+    <!-- H&T Blurb -->
+    <p id="big-blurb">Welcome! Keep a travel journal easily with this handy-dandy web app. You can create, view, delete, and update your journal entries from traveling all across the good ol' US of A!</p>
+
+    <p id="small-blurb">Though "a picture is worth a thousand words," you should really write them down!</p>
+
+  <!-- Button trigger for sign-in modal -->
+<div class="text-center">
+  <button type="button" class="btn btn-info navbar-btn sign-in-button" data-toggle="modal" data-target="#sign-in-modal" id="sign-in-button">
+          Log In
+        </button>
+</div>
+  <!-- Modal sign-in -->
+  <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign-in-label">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" id="sign-in-form">
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" name="credentials[email]" placeholder="example@email.com">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="credentials[password]" placeholder="password">
+              <button type="submit" class="btn btn-default">Sign In!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger for sign-up modal -->
+  <div class="text-center">
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#sign-up-modal" id="sign-up-button">
+               Sign Up
+             </button>
+  </div>
+  <!-- Modal sign-up -->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign-up-label">Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" id="sign-up-form">
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" name="credentials[email]" placeholder="example@email.com">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="credentials[password]" placeholder="password">
+              <label for="inputPassword">Confirm Password</label>
+              <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="password">
+              <button type="submit" class="btn btn-default">Sign Up!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger entry modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entry-modal" id="journal-entry-button">
+  Journal Entry
+  </button>
+
+  <!-- Create entry form in modal-->
+  <div class="modal fade" id="entry-modal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="entry-modal-label">Journal Entry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+        <form id="journal-entry-form">
+          <div class="form-group">
+            <select name="journal[state]" id="state-input" required>
+      <option value="" selected="selected">Select a State</option>
+      <option value="AL">Alabama</option>
+      <option value="AK">Alaska</option>
+      <option value="AZ">Arizona</option>
+      <option value="AR">Arkansas</option>
+      <option value="CA">California</option>
+      <option value="CO">Colorado</option>
+      <option value="CT">Connecticut</option>
+      <option value="DE">Delaware</option>
+      <option value="DC">District Of Columbia</option>
+      <option value="FL">Florida</option>
+      <option value="GA">Georgia</option>
+      <option value="HI">Hawaii</option>
+      <option value="ID">Idaho</option>
+      <option value="IL">Illinois</option>
+      <option value="IN">Indiana</option>
+      <option value="IA">Iowa</option>
+      <option value="KS">Kansas</option>
+      <option value="KY">Kentucky</option>
+      <option value="LA">Louisiana</option>
+      <option value="ME">Maine</option>
+      <option value="MD">Maryland</option>
+      <option value="MA">Massachusetts</option>
+      <option value="MI">Michigan</option>
+      <option value="MN">Minnesota</option>
+      <option value="MS">Mississippi</option>
+      <option value="MO">Missouri</option>
+      <option value="MT">Montana</option>
+      <option value="NE">Nebraska</option>
+      <option value="NV">Nevada</option>
+      <option value="NH">New Hampshire</option>
+      <option value="NJ">New Jersey</option>
+      <option value="NM">New Mexico</option>
+      <option value="NY">New York</option>
+      <option value="NC">North Carolina</option>
+      <option value="ND">North Dakota</option>
+      <option value="OH">Ohio</option>
+      <option value="OK">Oklahoma</option>
+      <option value="OR">Oregon</option>
+      <option value="PA">Pennsylvania</option>
+      <option value="RI">Rhode Island</option>
+      <option value="SC">South Carolina</option>
+      <option value="SD">South Dakota</option>
+      <option value="TN">Tennessee</option>
+      <option value="TX">Texas</option>
+      <option value="UT">Utah</option>
+      <option value="VT">Vermont</option>
+      <option value="VA">Virginia</option>
+      <option value="WA">Washington</option>
+      <option value="WV">West Virginia</option>
+      <option value="WI">Wisconsin</option>
+      <option value="WY">Wyoming</option>
+    </select>
+          </div>
+          <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
+            <div class="col-10">
+              <input class="form-control" type="text" name="journal[location_name]" placeholder="Beach" required>
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
+            <div class="form-select">
+              <label class="form-check-label">
+   <input type="radio" class="form-check-input" name="journal[rating]" value="1" id="rate-one" placeholder="option1"  required> 😠</label>
+            </div>
+            <div class="form-select">
+              <label class="form-check-label rating">
+   <input type="radio" class="form-check-input" name="journal[rating]" value="2" id="rate-two" placeholder="option2"> 😦</label>
+            </div>
+            <div class="form-select">
+              <label class="form-check-label rating">
+   <input type="radio" class="form-check-input" name="journal[rating]" value="3" id="rate-three" placeholder="option2"> 😑</label>
+            </div>
+            <div class="form-select">
+              <label class="form-check-label rating">
+   <input type="radio" class="form-check-input" name="journal[rating]" value=4 id="rate-four" placeholder="option2"> 😀</label>
+            </div>
+            <div class="form-select">
+              <label class="form-check-label rating">
+   <input type="radio" class="form-check-input" name="journal[rating]" value=5 id="rate-five" placeholder="option2"> 😍</label>
+            </div>
+          </fieldset>
+          <div class="form-group ">
+            <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+            <div class="col-10">
+              <textarea class="form-control" rows="3" name="journal[comments]" placeholder="Go ahead... Journal away!" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+            <div class="col-10">
+              <input class="form-control" type="date" name="journal[date]" placeholder="2017-08-19" id="date-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="example-time-input" class="col-2 col-form-label">Time</label>
+            <div class="col-10">
+              <input class="form-control" type="time" name="journal[time]" placeholder="3:20 PM" id="time-input">
+            </div>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Button trigger for change password modal -->
+  <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#change-password-modal" id="change-password-button">
+               Change Password
+             </button>
+  <!-- Modal change password -->
+  <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change-password-label">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" id="change-password-form">
+            <div class="form-group">
+              <label for="inputPassword">Old Password</label>
+              <input type="password" class="form-control" name="passwords[old]" placeholder="old password">
+              <label for="inputPassword">New Password</label>
+              <input type="password" class="form-control" name="passwords[new]" placeholder="new password">
+              <button type="submit" class="btn btn-default">Change Password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger for sign-out -->
+  <button type="button" id="sign-out-button" class="btn btn-danger">Sign Out</button>
+
+<!-- For alert messages -->
+<div id="success-message" class="alert alert-success" role="alert"></div>
+<div id="failure-message" class="alert alert-danger" role="alert"></div>
+<!-- This is specifically for getEntryFailure. It doesn't work with a div or id!? -->
+<p class="alert alert-danger failure-message" role="alert"></p>
+
+
+
+  <!-- Get one entry -->
+
+    <div>
+      <form class="form-inline" id="get-entry-form">
+        <div class="form-group">
+          <input type="number" class="form-control" name="journal[id]" placeholder="Get Entry by ID" required>
+        </div>
+        <button type="submit" id="get-entry-button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>   Find
+        </button>
+      </form>
+    </div>
+
+    <!-- Get all entries -->
+    <div>
+      <button type="button" class="btn btn-info" id="get-entries-button">Get Entries</button>
+
+      <button type="button" class="btn btn-light" id="clear-entries-button">Clear</button>
+    </div>
+
+
+<!-- Show entries -->
+  <div class="get-entries">
+  </div>
+
+    <!-- Update modal form: trigger button in DOM -->
+    <div class="modal fade" id="update-entry-modal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Journal Entry</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <form id="journal-update-form">
+            <div class="form-group">
+          <!-- Hidden ID input for update from DOM -->
+              <div class="col-10">
+                <input id="id-update-input" class="form-control" type="hidden" name="journal[id]">
+              </div>
+            </div>
+            <div class="form-group">
+              <select name="journal[state]" id="state-update-input"  required>
+        <option value="" selected="selected">Select a State</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+        <option value="AR">Arkansas</option>
+        <option value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delaware</option>
+        <option value="DC">District Of Columbia</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NH">New Hampshire</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+      </select>
+            </div>
+            <div class="form-group">
+              <label for="example-text-input" class="col-2 col-form-label">Location Name</label>
+              <div class="col-10">
+                <input id="loc-update-input" class="form-control" type="text" name="journal[location_name]" required>
+              </div>
+            </div>
+            <fieldset class="form-group">
+              <label for="exampleSelect1">Rate: 1= 😠 5= 😍</label>
+              <div class="form-select">
+                <label class="form-check-label">
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value="1" id="rate-update-one" required> 😠</label>
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value="2" id="rate-update-two"> 😦</label>
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value="3" id="rate-update-three"> 😑</label>
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value=4 id="rate-update-four"> 😀</label>
+              </div>
+              <div class="form-select">
+                <label class="form-check-label rating">
+     <input type="radio" class="form-check-input rating-update-input" name="journal[rating]" value=5 id="rate-update-five"> 😍</label>
+              </div>
+            </fieldset>
+            <div class="form-group ">
+              <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+              <div class="col-10">
+                <textarea class="form-control" rows="3" name="journal[comments]" placeholder="Go ahead... Journal away!" id="comments-update-input" required></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="example-date-input" class="col-2 col-form-label">Date</label>
+              <div class="col-10">
+                <input class="form-control" type="date" name="journal[date]" id="date-update-input">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="example-time-input" class="col-2 col-form-label">Time</label>
+              <div class="col-10">
+                <input class="form-control" type="time" name="journal[time]" id="time-update-input">
+              </div>
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update Entry</button>
+        </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    </div>
+</body>
+
+</html>
