@@ -95,8 +95,10 @@ const updateEntrySuccess = function (data) {
   $('.get-entries').empty()
   $('#success-message').text('Done!').fadeIn().fadeOut(3000)
   // Reload DOM of remaining entries
-  const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
-  $('.get-entries').append(indexJournalsHtml)
+  const indexJournalHtml = indexJournalTemplate({journal: data.journal})
+  $('.get-entries').append(indexJournalHtml)
+  // const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
+  // $('.get-entries').append(indexJournalsHtml)
   // console.log(data.journals)
   store.journals = data.journals
 }

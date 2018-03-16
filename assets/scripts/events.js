@@ -146,12 +146,12 @@ const onPopulateUpdate = () => {
 const onUpdateEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  $('.rating-update-input').val()
+  // $('.rating-update-input').val()
   // console.log($('#rate-update-three').val())
   // Opens modal with entry form.
   $('#update-entry-modal').modal('hide')
   api.updateEntry(data)
-    .then(() => api.getAllEntries(event))
+    .then(() => api.getOneEntry(data))
     .then(ui.updateEntrySuccess)
 }
 
