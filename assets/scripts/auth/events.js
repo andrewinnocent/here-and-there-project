@@ -33,7 +33,6 @@ const onSignUp = function (event) {
   event.preventDefault()
   $('#sign-up-modal').modal('hide')
   const data = getFormFields(this)
-  // console.log(data)
   $('#sign-up-form').get(0).reset()
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -45,7 +44,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   $('#sign-in-modal').modal('hide')
   const data = getFormFields(this)
-  // console.log(data)
   $('#sign-in-form').get(0).reset()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -56,7 +54,6 @@ const onSignIn = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
-    // .then(ui.signOutSuccess)
     .then(notSignedIn)
     .then(ui.clearEntries)
     .catch(ui.signOutFailure)

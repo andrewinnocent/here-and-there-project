@@ -5,58 +5,44 @@ const indexJournalsTemplate = require('../templates/helpers/journals-listing.han
 const indexJournalTemplate = require('../templates/helpers/journal-listing.handlebars')
 
 // Journal entry messages
-const entrySubmitSuccess = function () {
-  $('#success-message').text('✈ Smooth Sailing!').fadeIn().fadeOut(3000)
-}
+const entrySubmitSuccess = () => $('#success-message').text('✈ Smooth Sailing!').fadeIn().fadeOut(3000)
 
-const entrySubmitFailure = function () {
-  $('#failure-message').text('Whoops! Try Again').fadeIn().fadeOut(3000)
-}
+const entrySubmitFailure = () => $('#failure-message').text('Whoops! Try Again').fadeIn().fadeOut(3000)
 
 // Get all journal entries messages
-const getEntriesSuccess = function (data) {
-// data.journals is an array of objects
-  // console.log(data.journals)
-  // Referencing handlebars
+const getEntriesSuccess = (data) => {
   const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
   $('.get-entries').append(indexJournalsHtml)
   store.journals = data.journals
 }
 
-const getEntriesFailure = function () {
-  $('#failure-message').text('Go Ahead And Try Again')
-}
+const getEntriesFailure = () => $('#failure-message').text('Go Ahead And Try Again')
 
 // Get one journal entry messages
-const getEntrySuccess = function (data) {
+const getEntrySuccess = (data) => {
 // data.journal is an object with journal as key and object with ID requested as value.
-  // console.log(data.journal)
   const indexJournalHtml = indexJournalTemplate({journal: data.journal})
   $('.get-entries').append(indexJournalHtml)
   store.journal = data.journal
 }
 
-const getEntryFailure = function (data) {
-  // $('.failure-message').show()
+const getEntryFailure = (data) => {
   $('.failure-message').text('Entry Doesn\'t Exist - Try Again').fadeIn().fadeOut(3000)
 }
 
 // Update one journal entry messages
-const updateEntrySuccess = function (data) {
+const updateEntrySuccess = (data) => {
 // Clear DOM of entries
   $('.get-entries').empty()
   $('#success-message').text('Done!').fadeIn().fadeOut(3000)
   // Reload DOM of remaining entries
   const indexJournalHtml = indexJournalTemplate({journal: data.journal})
   $('.get-entries').append(indexJournalHtml)
-  // const indexJournalsHtml = indexJournalsTemplate({journals: data.journals})
-  // $('.get-entries').append(indexJournalsHtml)
-  // console.log(data.journals)
   store.journals = data.journals
 }
 
 // Delete one journal entry messages
-const deleteEntrySuccess = function (data) {
+const deleteEntrySuccess = (data) => {
 // Clear DOM of entries
   $('.get-entries').empty()
   $('#success-message').text('😭 It\'s Gone Forever!').fadeIn().fadeOut(3000)
@@ -66,14 +52,10 @@ const deleteEntrySuccess = function (data) {
   store.journals = data.journals
 }
 
-const deleteEntryFailure = () => {
-  $('#failure-message').text('It Won\'t Go Away - Try Again')
-}
+const deleteEntryFailure = () => $('#failure-message').text('It Won\'t Go Away - Try Again')
 
 // To clear entries in DOM
-const clearEntries = () => {
-  $('.get-entries').empty()
-}
+const clearEntries = () => $('.get-entries').empty()
 
 module.exports = {
   entrySubmitSuccess,
