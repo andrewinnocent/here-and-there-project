@@ -3,16 +3,12 @@
 const store = require('../store')
 
 // Sign-up messages
-const signUpSuccess = function (data) {
-  $('#success-message').text('Success! Log In to Start Journaling!').fadeIn().fadeOut(3000)
-}
+const signUpSuccess = (data) => $('#success-message').text('Success! Log In to Start Journaling!').fadeIn().fadeOut(3000)
 
-const signUpFailure = function () {
-  $('#failure-message').text('Weird... Try Again').fadeIn().fadeOut(3000)
-}
+const signUpFailure = () => $('#failure-message').text('Weird... Try Again').fadeIn().fadeOut(3000)
 
 // Sign-in messages
-const signInSuccess = function (data) {
+const signInSuccess = (data) => {
   $('#success-message').text('👋 Welcome, User ' + data.user.email + '!').fadeIn().fadeOut(3000)
   // Buttons to show when signed in
   $('#sign-in-button').hide()
@@ -28,27 +24,17 @@ const signInSuccess = function (data) {
   store.user = data.user
 }
 
-const signInFailure = function () {
-  $('#failure-message').text('Hmmm... Try That Again').toggle().fadeOut(3000)
-}
+const signInFailure = () => $('#failure-message').text('Hmmm... Try That Again').toggle().fadeOut(3000)
 
 // Sign-out messages
-const signOutSuccess = function () {
-  $('#success-message').text('✌ See you later!').toggle().fadeOut(3000)
-}
+const signOutSuccess = () => $('#success-message').text('✌ See you later!').toggle().fadeOut(3000)
 
-const signOutFailure = function () {
-  $('#failure-message').text('Uh Oh... Are You Signed In?').fadeIn().fadeOut(3000)
-}
+const signOutFailure = () => $('#failure-message').text('Uh Oh... Are You Signed In?').fadeIn().fadeOut(3000)
 
 // Change password messages
-const changePasswordSuccess = function () {
-  $('#success-message').text('Save New Password').fadeIn().fadeOut(3000)
-}
+const changePasswordSuccess = () => $('#success-message').text('Save New Password').fadeIn().fadeOut(3000)
 
-const changePasswordFailure = function () {
-  $('#failure-message').text('Welp... Try Again').fadeIn().fadeOut(3000)
-}
+const changePasswordFailure = () => $('#failure-message').text('Welp... Try Again').fadeIn().fadeOut(3000)
 
 module.exports = {
   signUpSuccess,
