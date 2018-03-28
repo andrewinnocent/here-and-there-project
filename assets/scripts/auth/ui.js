@@ -1,8 +1,6 @@
 'use strict'
 
 const store = require('../store')
-// const indexJournalsTemplate = require('../templates/helpers/journals-listing.handlebars')
-// const indexJournalTemplate = require('../templates/helpers/journal-listing.handlebars')
 
 // Sign-up messages
 const signUpSuccess = function (data) {
@@ -40,12 +38,12 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function () {
-  $('#failure-message').text('Uh oh... Are You Signed In?').fadeIn().fadeOut(3000)
+  $('#failure-message').text('Uh Oh... Are You Signed In?').fadeIn().fadeOut(3000)
 }
 
 // Change password messages
 const changePasswordSuccess = function () {
-  $('#success-message').text('Well done!').fadeIn().fadeOut(3000)
+  $('#success-message').text('Save New Password').fadeIn().fadeOut(3000)
 }
 
 const changePasswordFailure = function () {

@@ -1,12 +1,12 @@
 'use strict'
 
 const api = require('./api')
-const getFormFields = require('../../lib/get-form-fields')
+const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
-const store = require('./store')
+const store = require('../store')
 
 // Journal entry events
-const onSubmitEntry = function (event) {
+const onSubmitEntry = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   $('#entry-modal').modal('hide')
@@ -20,7 +20,7 @@ const onSubmitEntry = function (event) {
 }
 
 // Get all journal entries
-const onGetEntries = function (event) {
+const onGetEntries = (event) => {
   event.preventDefault()
   $(this).prop('disabled', true)
   ui.clearEntries()

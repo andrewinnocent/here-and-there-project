@@ -3,9 +3,7 @@
 const config = require('../config')
 const store = require('../store')
 
-// ajax requests to post the info input to the server (API). The API stores the
-// sign up information and returns what's been saved.
-const signUp = function (data) {
+const signUp = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
@@ -16,7 +14,7 @@ const signUp = function (data) {
   })
 }
 
-const signIn = function (data) {
+const signIn = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
@@ -27,7 +25,7 @@ const signIn = function (data) {
   })
 }
 
-const signOut = function () {
+const signOut = () => {
   return $.ajax({
     url: config.apiOrigin + '/sign-out',
     method: 'DELETE',
@@ -38,7 +36,7 @@ const signOut = function () {
   })
 }
 
-const changePassword = function (data) {
+const changePassword = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/change-password',
     method: 'PATCH',

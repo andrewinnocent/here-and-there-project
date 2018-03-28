@@ -1,58 +1,10 @@
 'use strict'
 
-// const setAPIOrigin = require('../../lib/set-api-origin')
-const config = require('./config')
-const store = require('./store')
-
-// ajax requests to post the info input to the server (API). The API stores the
-// sign up information and returns what's been saved.
-const signUp = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-up',
-    method: 'POST',
-    header: {
-      contentType: 'application/json'
-    },
-    data
-  })
-}
-
-const signIn = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-in',
-    method: 'POST',
-    header: {
-      contentType: 'application/json'
-    },
-    data
-  })
-}
-
-const signOut = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-out',
-    method: 'DELETE',
-    headers: {
-      contentType: 'application/json',
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
-const changePassword = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/change-password',
-    method: 'PATCH',
-    headers: {
-      contentType: 'application/json',
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  })
-}
+const config = require('../config')
+const store = require('../store')
 
 // Journal scripts
-const createEntry = function (data) {
+const createEntry = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/journals',
     method: 'POST',
@@ -65,7 +17,7 @@ const createEntry = function (data) {
 }
 
 // Get all journal entries
-const getAllEntries = function () {
+const getAllEntries = () => {
   return $.ajax({
     url: config.apiOrigin + '/journals',
     method: 'GET',
@@ -77,7 +29,7 @@ const getAllEntries = function () {
 }
 
 // Get one journal entry
-const getOneEntry = function (data) {
+const getOneEntry = (data) => {
   // console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/journals/' + data.journal.id,
@@ -90,7 +42,7 @@ const getOneEntry = function (data) {
 }
 
 // Get one journal entry from DOM to be able to populate data into form for update
-const getOneEntryDOM = function (data) {
+const getOneEntryDOM = (data) => {
   // console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/journals/' + data,
@@ -103,7 +55,7 @@ const getOneEntryDOM = function (data) {
 }
 
 // Update one journal entry
-const updateEntry = function (data) {
+const updateEntry = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/journals/' + data.journal.id,
     method: 'PATCH',
@@ -116,7 +68,7 @@ const updateEntry = function (data) {
 }
 
 // Delete one journal entry
-const deleteEntry = function (id) {
+const deleteEntry = (id) => {
   // console.log(id)
   return $.ajax({
     url: config.apiOrigin + '/journals/' + id,
@@ -129,10 +81,6 @@ const deleteEntry = function (id) {
 }
 
 module.exports = {
-  signUp,
-  signIn,
-  signOut,
-  changePassword,
   createEntry,
   getAllEntries,
   getOneEntry,
